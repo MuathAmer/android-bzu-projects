@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3"
+    android:theme="@style/Theme.Assignment2.Timer"
+
+    tools:context=".TimerActivity">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:elevation="20dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/timer_activity_header"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/minutesTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="16dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/activityIcon"
+            app:srcCompat="@drawable/ic_round_timer_24" />
+
+        <TextView
+            android:id="@+id/toolbarTextView"
+            style="@style/toolbarTitle"
+            android:text="@string/timer_toolbar_title" />
+
+        <ImageButton
+            style="@style/toolbarActionButton"
+            android:onClick="goToBmiActivity"
+            android:src="@drawable/ic_round_accessibility_new_24" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/hoursTextField"
+        style="@style/bmiTextField"
+        android:hint="@string/hours_edit_text_hint"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/minutesTextField"
+        app:layout_constraintTop_toTopOf="@+id/minutesTextField">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/hoursEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/clock_digit_zero"
+            android:textSize="40sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/minutesTextField"
+        style="@style/bmiTextField"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/minutes_edit_text_hint"
+        app:layout_constraintBottom_toTopOf="@+id/resetButton"
+        app:layout_constraintLeft_toRightOf="@id/hoursTextField"
+        app:layout_constraintRight_toLeftOf="@id/secondsTextField"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/minutesEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/clock_digit_zero"
+            android:textSize="40sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/secondsTextField"
+        style="@style/bmiTextField"
+        android:hint="@string/seconds_edit_text_hint"
+        app:layout_constraintLeft_toRightOf="@id/minutesTextField"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/minutesTextField">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/secondsEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/clock_digit_zero"
+            android:textSize="40sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/playButton"
+        style="@style/bmiCircularButton"
+        android:layout_marginEnd="16dp"
+        android:onClick="turnTimerOn"
+        app:fabSize="normal"
+        app:icon="@drawable/ic_round_play_arrow_24"
+        app:iconSize="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/resetButton" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/pauseButton"
+        style="@style/bmiCircularButton"
+        android:layout_marginEnd="16dp"
+        android:onClick="turnTimerOff"
+        app:fabSize="normal"
+        app:icon="@drawable/ic_round_pause_24"
+        app:iconSize="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/resetButton"
+        app:layout_constraintStart_toEndOf="@+id/playButton"
+        app:layout_constraintTop_toTopOf="@+id/resetButton" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/resetButton"
+        style="@style/bmiCircularButton"
+        android:onClick="resetTimer"
+        app:fabSize="normal"
+        app:icon="@drawable/ic_round_clear_24"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pauseButton"
+        app:layout_constraintTop_toBottomOf="@+id/minutesTextField"
+        app:layout_constraintVertical_bias="0.496" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

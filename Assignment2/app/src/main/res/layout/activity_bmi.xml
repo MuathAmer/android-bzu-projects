@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BmiActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="16dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/activityIcon"
+            app:srcCompat="@drawable/ic_round_accessibility_new_24" />
+
+        <TextView
+            android:id="@+id/toolbarTextView"
+            style="@style/toolbarTitle"
+            android:text="@string/bmi_activity_toolbar_title" />
+
+        <ImageButton
+            style="@style/toolbarActionButton"
+            android:onClick="goToTimerActivity"
+            android:src="@drawable/ic_round_timer_24" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="20dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/bmi_activity_header"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@id/nameTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <ImageView
+        android:id="@+id/nameIconImageView"
+        android:layout_width="39dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:stateListAnimator="@null"
+        android:tint="#888"
+        app:layout_constraintBottom_toBottomOf="@id/nameTextField"
+        app:layout_constraintEnd_toStartOf="@id/nameTextField"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/nameTextField"
+        app:srcCompat="@drawable/ic_round_person_24" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameTextField"
+        android:layout_width="305dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/name_hint"
+        app:layout_constraintBottom_toTopOf="@id/genderTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/nameIconImageView"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ageTextField"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:hint="@string/age_hint"
+        app:layout_constraintBottom_toBottomOf="@id/genderTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/genderTextField"
+        app:layout_constraintTop_toTopOf="@id/genderTextField">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/genderTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/gender_hint"
+        app:layout_constraintBottom_toTopOf="@id/heightSlider"
+        app:layout_constraintEnd_toStartOf="@id/ageTextField"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameTextField">
+
+        <AutoCompleteTextView
+            android:id="@+id/genderDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAutofill="no" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/heightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/height_label"
+        android:textSize="16sp"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toTopOf="@id/heightSlider"
+        app:layout_constraintStart_toStartOf="@id/heightSlider" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/heightSlider"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:stepSize="1"
+        android:valueFrom="130"
+        android:valueTo="210"
+        app:layout_constraintBottom_toTopOf="@id/weightSlider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genderTextField" />
+
+    <TextView
+        android:id="@+id/weightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/weight_label"
+        android:textSize="16sp"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toTopOf="@id/weightSlider"
+        app:layout_constraintStart_toStartOf="@id/weightSlider" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/weightSlider"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:stepSize="1"
+        android:valueFrom="30"
+        android:valueTo="180"
+        app:layout_constraintBottom_toTopOf="@id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heightSlider" />
+
+
+    <TextView
+        android:id="@+id/heightValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/height_starting_value"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toTopOf="@id/heightSlider"
+        app:layout_constraintEnd_toEndOf="@id/heightSlider" />
+
+    <TextView
+        android:id="@+id/weightValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/weight_starting_value"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toTopOf="@id/weightSlider"
+        app:layout_constraintEnd_toEndOf="@id/weightSlider" />
+
+
+    <Button
+        android:id="@+id/saveButton"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="savePersonData"
+        android:text="@string/save_button_text"
+        android:textSize="18sp"
+        app:icon="@drawable/ic_round_save_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/calculateButton"
+        app:layout_constraintTop_toBottomOf="@id/weightSlider" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:onClick="calculateAndShowBmiResult"
+        android:text="@string/calculate_button_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/saveButton"
+        app:layout_constraintEnd_toStartOf="@id/saveButton"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
