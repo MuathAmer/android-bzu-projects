@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Movie Portal</string>
+    <string name="search_hint">Search movies by title</string>
+    <string name="genre_label">Genre:</string>
+    <string name="year_input_label">Year of release:</string>
+    <string name="enable">Enable</string>
+    <string name="results_label_before_populating">Results are shown here</string>
+    <string name="student_credits">Muath Amer\n1170497</string>
+</resources>

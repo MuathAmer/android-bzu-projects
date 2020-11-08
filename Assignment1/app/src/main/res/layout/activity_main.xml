@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary">
+        <!--        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+        <!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edge"
+            android:gravity="center_horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="3dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:src="@drawable/ic_search"
+                app:tint="@color/colorPrimaryLight"
+                android:onClick="search"
+                android:tooltipText="Search"/>
+
+            <EditText
+                android:id="@+id/titleSearchEditText"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="7dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:hint="@string/search_hint"
+                android:inputType="textCapWords"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/colorPrimaryLight" />
+
+            <ImageButton
+                android:id="@+id/searchOptionsButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:onClick="toggleSearchOptionsVisibility"
+                android:src="@drawable/ic_tune"
+                app:tint="@android:color/white"
+                android:tooltipText="More search options"/>
+
+        </LinearLayout>
+    </Toolbar>
+
+    <LinearLayout
+        android:id="@+id/searchOptionsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSecondaryAccent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="@string/genre_label"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/searchGenreSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_weight="0"
+                android:tooltipText="Filter search results by movie genre"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorDarkArea" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="@string/year_input_label"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/yearEditText"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="number"
+                android:enabled="false"
+                android:textColor="@android:color/black" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:id="@+id/yearEnableCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="@string/enable"
+                android:textStyle="italic"
+                android:tooltipText="Enable filtering movies by genre"/>
+
+        </LinearLayout>
+
+        <!--        <Spinner
+                    android:id="@+id/searchBySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="0" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorDarkArea" />-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/colorPrimary" />
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/moviesResultsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:gravity="top"
+        android:hint="@string/results_label_before_populating"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:textSize="14sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:paddingVertical="3dp"
+        android:paddingLeft="30dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_movie" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            android:text="@string/student_credits"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>
